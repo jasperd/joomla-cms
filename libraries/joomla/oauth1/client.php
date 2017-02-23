@@ -202,8 +202,9 @@ abstract class JOAuth1Client
 
 		if ($this->getOption('scope'))
 		{
+			$scopeName = $this->getOption('scopeName') ? $this->getOption('scopeName') : 'scope';
 			$scope = is_array($this->getOption('scope')) ? implode(' ', $this->getOption('scope')) : $this->getOption('scope');
-			$url .= '&scope=' . urlencode($scope);
+			$url .= '&' . urlencode($scopeName) . '=' . urlencode($scope);
 		}
 
 		if ($this->getOption('sendheaders'))
